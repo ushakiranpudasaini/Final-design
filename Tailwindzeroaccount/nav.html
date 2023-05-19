@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html class="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css" class="">
+    <script src="https://cdn.tailwindcss.com"></script>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                },
+                fontFamily: {
+                    poppins: ['Poppins', 'sans-serif'],
+                    Montserrat: ['Montserrat', 'sans-serif']
+                },
+            }
+        }
+    </script>
+    <style>
+
+
+.sideopen-menu, .sideclose-menu {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: #252a32;
+    background: none;
+}
+
+.sideclose-menu {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    border: none;
+    outline: none;
+    color: #252a32;
+    background: none;
+}
+.nav-header .side-navbar .menu-wrapper::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: background 0.5s;
+}
+
+.nav-header .side-navbar .menu-wrapper.offcanvas .menu {
+    transform: translate3d(0, 0, 0);
+    transition-duration: 0.7s;
+    transition-delay: 0.2s;
+}
+
+.nav-header .side-navbar .menu-wrapper.offcanvas::before {
+    background: rgba(37, 42, 50, 0.6);
+    z-index: 116;
+}
+
+.nav-header .side-navbar .menu {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    max-width: 20rem;
+    width: 100%;
+    padding: 1.5rem 1rem;
+    z-index: 150;
+    overflow-y: auto;
+    color: #252a32;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.24);
+    transform: translate3d(-100%, 0, 0);
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.nav-header .side-navbar .menu-block {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+}
+
+.nav-header .side-navbar .menu-link {
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: inherit;
+    text-transform: uppercase;
+    transition: color 0.35s ease-out;
+}
+
+.nav-header .side-navbar .menu-item {
+    position: relative;
+}
+
+    .nav-header .side-navbar .menu-item.has-collapsible {
+        position: relative;
+    }
+
+        .nav-header .side-navbar .menu-item.has-collapsible .menu-child {
+            display: none;
+        }
+
+        .nav-header .side-navbar .menu-item.has-collapsible span::after {
+            content: "\203A";
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: inherit;
+            position: absolute;
+            top: 0.15rem;
+            right: 1rem;
+            color: #252a32;
+            transition: all 0.35s ease;
+        }
+
+    .nav-header .side-navbar .menu-item.active.has-collapsible .menu-child {
+        display: block;
+        transition: all 0.35s ease;
+    }
+
+    .nav-header .side-navbar .menu-item.active.has-collapsible span::after {
+        transform: rotate(90deg);
+    }
+/*  */
+
+
+ .menu .item{
+ position: relative;
+ cursor: pointer;
+}
+
+
+
+
+
+ .menu .item i{
+ margin-right: 15px;
+}
+
+ .menu .item a .dropdown{
+ position: absolute;
+ right: 0;
+ margin: 20px;
+ transition: 0.3s ease;
+}
+
+ .menu .item .sub-menu{
+ background: #262627;
+ display: none;
+}
+
+ .menu .item .sub-menu a{
+ padding-left: 80px;
+}
+
+.rotate{
+ transform: rotate(90deg);
+}
+
+
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins&display=swap" rel="stylesheet">
+    <title>Document</title>
+
+</head>
+
+<body class="font-poppins bg-[#EEF2F7]">
+
+ <header class="lg:hidden flex justify-between items-center px-4 py-2.5 nav-header">
+       logo
+        <nav class="side-navbar">
+            <span class="sideopen-menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="16">
+                    <g fill="#252a32" fill-rule="evenodd">
+                        <path d="M0 0h24v2H0zM0 7h24v2H0zM0 14h24v2H0z" />
+                    </g>
+                </svg>
+            </span>
+
+            <div class="menu-wrapper">
+                <ul class="menu nav-links">
+                    <li class="menu-block">
+                        <span class="sideclose-menu">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+                                <path fill="#252a32"
+                                      fill-rule="evenodd"
+                                      d="M17.778.808l1.414 1.414L11.414 10l7.778 7.778-1.414 1.414L10 11.414l-7.778 7.778-1.414-1.414L8.586 10 .808 2.222 2.222.808 10 8.586 17.778.808z" />
+                            </svg>
+                        </span>
+                    </li>
+                    <li class="relative text-gray-700 border-b  dark:text-gray-300 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 border-inherit">
+                        <a href="index.html" class="block  dark:text-gray-400 font-medium py-2 flex items-center ">
+                            <img class="mx-2 w-8 h-8 object-cover" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAACXBIWXMAAAsTAAALEwEAmpwYAAADm0lEQVR4nO3WX0xTVxwH8OqiiXEPS3zwwZe97GlPZi97mslmLeltp8MVk8XFP9P4Z5Mlm3ExcakxspbeW1lFAwqoSCSKgDNgHdkYAdPbnmspFEqxFHuR+QeGTTv6ByjlfpdzrUSqhjAFq/Yk37S5Pe3vc8/53ZMqFG/LYI7yq9ZzwnUNJzSrDPb3FZkydHrPUnWh/RBjckQPNwxOHm4YTDImElez5NBHp5xLXilOabB9omGJuKPCG7noHoO1X5JT0z2O3ZW9EQ1L7q4z2pULDvu0wL5Sw5G6DcecsRNtQRlV65lA/oU+ObU9E/K14raH2HBMiGk5cpl+Z95hupqadxjW8R3DksjB+oHxq74krH4JhqYHyC1ywtx0B9zvd+T39Br9jM45WC8m1KwjpmZJvl6PxfOCyzHYVms50r251D1a5YrJK1TpjGDL6S7sOeuBLRCFGJbkkIE48qu8+LrUjTPCqDy3uiOOrWVdEY1Z8OUYHR+/NNiaopb3GJaUMqwQL2x6IF3rl3CldxIHLgeQ+6sTlfwQAilYeuraR7DR4sT31X2o8yZkqKVlRNJyQpxhSc1nv5AVL4RTG/k8hnWE9l3wjdWnChTfCCLvuAs/1/nhGUo8E/Zkev5JwNAo4ktLO8x/DuPRDSaw/9LtcQ1HwjlGfosCWDQn2NpC+wefmwV+04mO6PQWdcax62wPtp/uwl++0VlhYlpa+yPYWdGNbyo8eNwi55wRfFXijmrNN10qI/lwVpjOzC9Tm0iBxkSiBdZ7yWv+KTT4ktBfHZS3s7ztPm6HpuaME1MJhCRU2obwRdFN/FQbwG+3JuUHiWseTmo5ElObHCVr9C3vPhOnNPBaxkSGd57xxuk5Ru/w5I0gNhW78GP1LXTcG//fMDEt7vsTcovojrfD0vpw+pj6tspHezOYY+B1M3Aajvyx0dIePcWH5cmXusaw93wvNpd04npP6KXBxLTQ36Y1aC1ak9amBmqhpmmgymhHY98UGvxTONJ4V96Ck81/wx9MzhtOTIXWoLVoTVqbGqiFmmYAyxz/Iq/YhX3nvXAMxOYdJqZFGBzDD9W9yLU4UWoLPQ1kWDJCXxcaJqblScs0cJ3RblKyncszBahkO5dT01NPcqYAFc8bWWA4u4LSjF5RzSEL3oN0rjX1F3+2ZIFidgWlbA8i+5C8dcfM1jIPtpV7Mhe4rdyD7ZkMtGb6FluzwHB2BfFm9qAqA6J4ncZ/D+G9oGjzB2wAAAAASUVORK5CYII=">Dashboard
+                        </a>
+                    </li>
+                    <li class="menu-item has-collapsible border-b  pb-2 hover:bg-gray-100  dark:border-gray-700 border-inherit">
+                        <a href="#" class=" block  flex items-center py-2 ">
+                            <img class="mx-2 w-8 h-8 object-cover" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAHkklEQVR4nO1a6VMTZxgPM71mOp1+sV/av6BO/4la22/96IySVUtRDoViPYok0WiRw/EACkJAEDmaBJGAF54g4IFalfGg9QigROQwISFsSDbHPp3nDYGEbMJuQlI67jPzDBN2Z7O/3+853ufNK5GIJppoookmmmiiifaeWkoKfLhe4U6kFMwfUrmz7v1wV0liDpOI2CUIPmmfQ1PcQJsqmhlWddoNEXkzA6qmKVCpDaBSD/N3zVtQNVlApZ0IfS3AzQu+wwAqrZnjPm6v0E6yxXVGE2KWypl1ElQewU9MgiDTdXjmwOs63fMXHEMA5kv8ne4HsA0AmK9yX5sZCnTrvcB7ph8E37OIj48MQ1G9yYiRIMGQQOVhqYxl+IOf6vG+FIIIdS3A9QCWK373XfWSJ5AAdIwEqdxZRwhAFZfKWjrcoGt/LkD9QQDLtbip73NMB2ksCCBpoR5e1uovCQEtHfMFUNfpEU5ArNW3v4stAboQRZAXAbFWH8E7HAD2sWWaAnQM1bcbveB9PjO2zAiYil59ltYvEv5js+BHlmEE0JGrz05ehKJCGRwu2Muj0IUO/wACKAWjwpeetsWhCPqp73rXDi0NeSDbuRkyUimQ7UqDFk0VuKz6kOr33aiBjLRkyN2bHXH1R7caXxMCKBmjwgjI3K+yPao9w7Bd9z0w+IYFlo1REfRTH8FvTf4xyHWaqhDqX4I85XbISNsEvd1nBIP20IMwMDACXbfHoVY3yeZWmvulcmeqZE02fC6VO3enHrC3lDTaLAhAfdENr0cjWxyGJGBB7qPyCHigJw2cL7PgZXca+Sz7bRun+vc6K+fUZ5FEAeBfDb2BP89NEtVLG022LfkzrVKZcxu1Az6dmwrXKWEFJbevKq633MSlcWWLG3of84sGXgQsyH0MewSM4H2On1Hhheq7je2wT5ZFrj283c4bOGsbgt7747NDkJktbZy4k7jH9S1iDTMgQ0LhienEMi1tRjB3nrDRE8BR+cMTEKh+z8Uyon7B7zLw0PxXf733x7zgNSb6aJ1xI2LjvU8gzYGVB6qmH6pOMyxXOggqghyVPywBfupjsVRkZ5D/9z+8JijsUfWCqskn6xWOryPaLFkvd63G2nCiddrk8bCRFcEQfV+2y1sD9L4a0JU6WwOyAtTvOFtC1D96cJ+ggndSZ7Sm5820UXLXKknEBpAglTP52C/1Bn6pEERAiL6vazjA2QVaNcVz9zjGz8PuHelE/ZdPu3kToNePkB5PyZg8QWHPZVSO63t8WMc9j3ACwqz6XKbrpOVh1UeA+FenrQSXcf6eC6cOEfXLivIFVf1rNycIAYly+2pJtLZBBl/hwzSXIiAgilUfPXIGdmalEHKGnt0SRID6nIkQsFZp+zJqAjIz4WN8WHWbW1gRjHLN36YuJOpXlx8SvOipPm0mBKxRwkdRE7BRCZ/gw2raPMKKYBTqT71uhe2Zm+CXLZvhjf5uxASgeP9NCmjeRqV+U+0Bon5ddbFg8EueAtQebxHs/EsAAVpTsPrTz3mpbxw8Ddu2JkPW1hR4Z+gj13FAwkEJW6SvYAYPTvPecctbBLGNR4ceIIGSuQoEt8EmS6D6CBDn8+lHi6rfULWPqK+pOzZ3D4JddHDy84HZNogtPKo2KJW7fkjPs7edPEtbFy6EwhZBrWVefQRvN89uUU0D2N+GVH/0eRNkpifBr5lpYB59PHcPKh9+cAqeARpaJ2hcCEXcCqkc5pv8GvpJqKVw2CKonZgPe//tKZ/jthWH+tVlCqK+Tns8ABCGfdjBiXMpbIBy9RvnnlLjDWmOY6UA6JBwpJ5OKj9lo73DEL/cDyBAbQgMf18EOGyBEeCn/nC/mqi/IysdrBNPoyYA0623t490pKO1b1/vLzetCZsO65SwAsOlpNF61zcOCwUfchjC3CfK+4d/oPrlR7KJ+hda64LACCdgEGCqk2yiIAmVmmE41jDMFBwfa5fmuL5LyrF+MQf8513wGaVwZGOul6ptNgSgubTEGyJY+efCPlh9fV89ZKT9BNk7MmHG9CwIEOY69+DEXQMI4X7f/+r5TdCc0ZP3OlQzati8f6Y5UebIwc0giVTm3JJbRffXnnWyXQ9Y3ltivMdhHn2/+OBOov7V82pOQFjtOQenpuqQ6i9cf7CTl2Hw2S3ouvEYak69csiLTb2UzJkR8aYo73F4kb7/990TRH1Uk7G84CQA+33w4HScex2wQH0ut450kHekFN5N0dhti/NQ/0g+bnQmQ/eV5ohWfXzU53J8R2nMfxfg8SvP8WO5cLhQGXJVx99f8VI/fgRMxf4X3nkfBrBPAUxdjx8BLYsVwRj/vh+gPIJ32AHof+JHgC5cEfRNg3FRf9ZtL3iDj30KaE1xUp9/5Y8bAboOD+guG+OoPv/KH5KAiiU9JOVa9uqjlzYYbLMEuEqKGm3G8Ul2SYoguCzLXv3xoR7IrZh4OntMjlmHhwaRhKgPSp6yeQ9L+h9O1IwFHn7EA5E8DzUu6tp3wg5lqoehrMEwk1s+3r9hj6ORUjBryVFZJAHZeJ+OylIK91qlEj6IaLNENNFEE0000UQTTTTJ/9/+BUgcuJPRPHZDAAAAAElFTkSuQmCC">
+                            <span class="link_name dark:text-gray-400 font-medium"> Inventory</span>
+                        </a>
+                        <ul class="menu-child mt-2 divide-y divide-gray-300 dark:divide-gray-600 divide-dashed">
+                            <li class="menu-child-item  ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Purchase entry</a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Purchase Challan List</a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Purchase List </a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Debit Note </a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Debit Note List</a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Sales Entry</a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Sales List</a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Credit Note </a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Credit Note List</a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Manufacturing Invoice </a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Manufacturing List</a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Stock In </a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Stock In List</a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Stock Out </a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Stock Out List</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="menu-item has-collapsible border-b  pb-2 hover:bg-gray-100  dark:border-gray-700 border-inherit">
+                        <a href="#" class=" block  flex items-center py-2 ">
+                            <img class="mx-2 w-8 h-8 object-cover" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADT0lEQVR4nO1bz0sUURwf6WAzIfgHWKfCc0qdEoQOJoEzHroI9Q9UaJLORIQVZiR4FT2kizdF2UOSWMlKQSqSBykknYHdUZZ2zd0dPSjk4xtv3bHdaWbd3XHdmdnvFz4w8N77vu/n877vx8y+ZRg0NDS0ItidCTh3dSh+s344/qh+OPHMDHVDWgetQ+syXrOGkUTTg6nwl57p0G7v+xCYgZbdnwp/pnUZr1mnX52zIm5Ep39rjvGa9WQZeSOeT4f2GCfbef7pRU6QJllB2uUECcxQ3dYPNR1TcOnxuyRyJa9Db0d9VLe9Me2D4igG0V/V0lWbHiPXKt7mBHHrvza8tMkJ3c22yLO8tGMVkI6Gvk/wxC/nTdwI6uNG78esfaWEiNHYjgVIErWqL6oFC8AJ0iR10vpyFDajcSCEmOL17FaSwGbsANTYQd7E09tRX1b9qNEY8C9G9NGdSIszq2AFC8Cm0l6N7FgGRaETUQsUwNguW1+hXzupLBC1ogvApRxkC4hi4EPQdvrrGJgNntifkVjJBZhf2TgVESj5+ZV19wmgaRqsra3B6uqqLVAf1Fe+ApxUv+gCkDMGCiBkZoDV+4YOz2dAvWME2I/An2gADiOzGZAHmQwYyw+35+FwP+J+AfbUGQh+ewvy0nAmDAIYy2mbXXXG/QIEzcjnIIAugusFkM3IU4xd/kd+7IplPe8KsJQbUACCGQA4BQiuAYCLIMFdAHAbJHgOADwIEbedBJd9BZ8CN5Z97j8J/vz+tSARKPn1HwvuF0Ar8Ntgrt8CHS8AOSOgAAJmAOAUEDy8BmipxdRqcSz5FJBl2favQEYoinLsP30noc+OE0BRlPIWgJT7FCB4DiB4ECLlPAVk3AUU3AVIOU8BgosgwV2AlPMUkB22CyQWfYHEog8sEPD8u0B8YbTRSgBaduoCEIdNgSxZUPjou2kXsMoCW6Offlk6FN4uOWkdwXD06LI0LyUYg7GCFNDFoc+MXeME0U+dNbf3O0IESv7Ww379uvy4Md4LvNioC0CfbQtQ1dJVS/+cUNnUARXX7wJT11ZSVFy7B5VN7cDy4m+2tbvGLGaWF/tYQXrFnOpfZnhpgt7PP+lWdrGRjIGXxq3Io6GhoTF52F971OZVC3nfjQAAAABJRU5ErkJggg==">
+
+                            <span class="link_name dark:text-gray-400 font-medium"> Voucher</span>
+                        </a>
+                        <ul class="menu-child mt-2 divide-y divide-gray-300 dark:divide-gray-600 divide-dashed">
+                            <li class="menu-child-item  ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Journal Voucher</a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Sales Entry</a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Stock In </a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Stock Out </a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown menu-item has-collapsible  pb-2  border-gray-100 dark:border-gray-700 border-b">
+                        <div class="iocn-link group dark:hover:bg-gray-900 hover:bg-indigo-100">
+                            <a href="#">
+                              <img class="mx-4 h-8 object-contain" src="data:image/png;base64,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">
+                                <span class="font-semibold link_name dark:group-hover:text-gray-400 dark:text-gray-400 group-hover:text-indigo-600"> Reports</span>
+                            </a>
+                            <i class="bx bxs-chevron-down dark:group-hover:text-gray-400 arrow dark:text-gray-400 group-hover:text-indigo-600"></i>
+                        </div>
+                        <ul class="sub-menu dark:bg-gray-900 bg-white">
+                            <li class=" border-gray-100 dark:border-gray-700 border-b ">
+                                <div class="flex justify-between  hasSub hasSubMenu  items-center  hover:text-indigo-600">
+                                    <button class="py-2 font-semibold hover:text-indigo-500 text-gray-700 dark:text-gray-300 ">
+                                        Account Reports
+                                    </button>
+                                    <a href="#"
+                                        class="hover:text-indigo-600  dark:text-gray-400 inline-block ml-auto">
+                                        <svg data-baseweb="icon" viewBox="0 0 24 24"
+                                            class="ml-1 w-6 h-6 fill-current chevron">
+                                            <title>Chevron Down</title>
+                                            <path transform="rotate(270, 12, 12)" fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M9 12C9 12.2652 9.10536 12.5196 9.29289 12.7071L13.2929 16.7071C13.6834 17.0976 14.3166 17.0976 14.7071 16.7071C15.0976 16.3166 15.0976 15.6834 14.7071 15.2929L11.4142 12L14.7071 8.70711C15.0976 8.31658 15.0976 7.68342 14.7071 7.29289C14.3166 6.90237 13.6834 6.90237 13.2929 7.29289L9.29289 11.2929C9.10536 11.4804 9 11.7348 9 12Z">
+                                            </path>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <ul class="text-sm subMenu hidden">
+                                    <li class=" border-gray-100 dark:border-gray-700 border-b">
+                                        <a href="reports.html"
+                                            class="dark:text-gray-400 hover:text-indigo-500 flex justify-between font-medium text-gray-600">
+                                            Account Reports
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="ml-1 w-6 h-6 bi bi-plus dark:text-gray-400"
+                                                    viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z">
+                                                    </path>
+                                                </svg></span></a>
+                                    </li>
+                                    <li class=" border-gray-100 dark:border-gray-700 border-b">
+                                        <div class="  hasSubMenu ">
+                                            <a href="journalvoucher.html" class="flex hover:text-indigo-500 dark:text-gray-400 justify-between">
+                                                <span>
+                                                    General Ledger</span>
+                                                <span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor"
+                                                        class="dark:text-gray-400 ml-1 w-6 h-6 bi bi-plus"
+                                                        viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z">
+                                                        </path>
+                                                    </svg></span></a>
+                                        </div>
+    
+                                    </li>
+                                    <li class=" border-gray-100 dark:border-gray-700 border-b">
+                                        <div class="  hasSubMenu ">
+                                            <a href="reports.html" class="flex hover:text-indigo-500 dark:text-gray-400 justify-between">
+                                                <span>
+                                                    Invoice</span>
+                                                <span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="ml-1 w-6 h-6 bi bi-plus"
+                                                        viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z">
+                                                        </path>
+                                                    </svg></span></a>
+                                        </div>
+    
+                                    </li>
+                                    <li class=" border-gray-100 dark:border-gray-700 border-b">
+                                        <div class="  hasSubMenu ">
+                                            <a href="journalvoucher.html" class="hover:text-indigo-500 dark:text-gray-400 flex justify-between">
+                                                <span>
+                                                    Sub Ledger</span>
+                                                <span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor"
+                                                        class="dark:text-gray-400 ml-1 w-6 h-6 bi bi-plus"
+                                                        viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z">
+                                                        </path>
+                                                    </svg></span></a>
+                                        </div>
+                                    </li>
+                                    <li class=" border-gray-100 dark:border-gray-700 border-b">
+                                        <div class="  hasSubMenu ">
+                                            <a href="journalvoucher.html" class="hover:text-indigo-500 dark:text-gray-400 flex justify-between">
+                                                <span>
+                                                    Trial Balance</span>
+                                                <span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor"
+                                                        class="dark:text-gray-400 ml-1 w-6 h-6 bi bi-plus"
+                                                        viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z">
+                                                        </path>
+                                                    </svg></span></a>
+                                        </div>
+                                    </li>
+                                    <li class=" border-gray-100 dark:border-gray-700 border-b">
+                                        <div class="  hasSubMenu ">
+                                            <a href="journalvoucher.html" class="hover:text-indigo-500 dark:text-gray-400 flex justify-between">
+                                                <span>
+                                                    Balance Sheet</span>
+                                                <span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor"
+                                                        class="dark:text-gray-400 ml-1 w-6 h-6 bi bi-plus"
+                                                        viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z">
+                                                        </path>
+                                                    </svg></span></a>
+                                        </div>
+                                    </li>
+                                    <li class=" border-gray-100 dark:border-gray-700 border-b">
+                                        <div class="  hasSubMenu ">
+                                            <a href="journalvoucher.html" class="hover:text-indigo-500 flex justify-between dark:text-gray-400">
+                                                <span>
+                                                    Income Statement</span>
+                                                <span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor"
+                                                        class="dark:text-gray-400 ml-1 w-6 h-6 bi bi-plus"
+                                                        viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z">
+                                                        </path>
+                                                    </svg></span></a>
+                                        </div>
+                                    </li>
+                                    <li class=" border-gray-100 dark:border-gray-700 border-b">
+                                        <div class="  hasSubMenu ">
+                                            <a href="purchaseentry.html" class="hover:text-indigo-500 flex justify-between dark:text-gray-400">
+                                                <span>
+                                                    Ageing Receivables</span>
+                                                <span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor"
+                                                        class="dark:text-gray-400 ml-1 w-6 h-6 bi bi-plus"
+                                                        viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z">
+                                                        </path>
+                                                    </svg></span></a>
+                                        </div>
+                                    </li>
+                                    <li class=" ">
+                                        <div class="  hasSubMenu ">
+                                            <a href="purchaseentry.html" class="hover:text-indigo-500 flex justify-between dark:text-gray-400">
+                                                <span>
+                                                    Scheme Report</span>
+                                                <span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor"
+                                                        class="ml-1 w-6 h-6 bi bi-plus dark:text-gray-400"
+                                                        viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z">
+                                                        </path>
+                                                    </svg></span></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class=" border-gray-100 dark:border-gray-700 border-b ">
+                                <div class="flex justify-between  hasSub hasSubMenu1  items-center  hover:text-indigo-600">
+                                    <button class="py-2 hover:text-indigo-500 font-semibold text-gray-700 dark:text-gray-300">
+                                        Inventory Reports
+                                    </button>
+                                    <a href="#"
+                                        class="hover:text-indigo-600  dark:text-gray-400 inline-block ml-auto">
+                                        <svg data-baseweb="icon" viewBox="0 0 24 24"
+                                            class="ml-1 w-6 h-6 fill-current chevron">
+                                            <title>Chevron Down</title>
+                                            <path transform="rotate(270, 12, 12)" fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M9 12C9 12.2652 9.10536 12.5196 9.29289 12.7071L13.2929 16.7071C13.6834 17.0976 14.3166 17.0976 14.7071 16.7071C15.0976 16.3166 15.0976 15.6834 14.7071 15.2929L11.4142 12L14.7071 8.70711C15.0976 8.31658 15.0976 7.68342 14.7071 7.29289C14.3166 6.90237 13.6834 6.90237 13.2929 7.29289L9.29289 11.2929C9.10536 11.4804 9 11.7348 9 12Z">
+                                            </path>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <ul class="subMenu hidden  text-sm">
+                                    <li class=" border-gray-100 dark:border-gray-700 border-b">
+                                         <a href="stockin.html"
+                                            class="flex justify-between hover:text-indigo-500 font-medium text-gray-700 dark:text-gray-400">
+                                            Stock Ledger
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="ml-1 w-6 h-6 bi bi-plus dark:text-gray-400"
+                                                    viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                </svg></span></a>
+    
+    
+                                    </li>
+                                    <li class=" border-gray-100 dark:border-gray-700 border-b">
+                                        <div class="  hasSubMenu ">
+                                            <a href="stockout.html" class="hover:text-indigo-500 flex justify-between dark:text-gray-400">
+                                                <span>
+                                                    Stock Ledger Summary</span>
+                                                <span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor"
+                                                        class="ml-1 w-6 h-6 bi bi-plus dark:text-gray-400"
+                                                        viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                    </svg></span></a>
+                                        </div>
+    
+                                    </li>
+                                    <li class=" border-gray-100 dark:border-gray-700 border-b">
+                                        <div class="  hasSubMenu ">
+                                            <a href="salesinvoice.html" class="hover:text-indigo-500 flex justify-between dark:text-gray-400">
+                                                <span>
+                                                    Sales Register</span>
+                                                <span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor"
+                                                        class="ml-1 w-6 h-6 bi bi-plus dark:text-gray-400"
+                                                        viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                    </svg></span></a>
+                                        </div>
+    
+                                    </li>
+                                    <li class=" ">
+                                        <div class="  hasSubMenu ">
+                                            <a href="salesinvoice.html" class="hover:text-indigo-500 flex justify-between dark:text-gray-400">
+                                                <span>
+                                                    Sales Register</span>
+                                                <span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor"
+                                                        class="dark:text-gray-400 ml-1 w-6 h-6 bi bi-plus"
+                                                        viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                    </svg></span></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class=" border-gray-100 dark:border-gray-700 border-b">
+                                <div class="flex justify-between hasSub hasSubMenu2 items-center  hover:text-indigo-600">
+                                    <button class="hover:text-indigo-500 py-2 font-semibold text-gray-700 dark:text-gray-300">
+                                        AR/AP Reports
+                                    </button>
+                                    <a href="#" class="inline-block ml-auto">
+                                        <svg data-baseweb="icon" viewBox="0 0 24 24"
+                                            class="ml-1 w-6 h-6 fill-current chevron dark:text-gray-400">
+                                            <title>Chevron Down</title>
+                                            <path transform="rotate(270, 12, 12)" fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M9 12C9 12.2652 9.10536 12.5196 9.29289 12.7071L13.2929 16.7071C13.6834 17.0976 14.3166 17.0976 14.7071 16.7071C15.0976 16.3166 15.0976 15.6834 14.7071 15.2929L11.4142 12L14.7071 8.70711C15.0976 8.31658 15.0976 7.68342 14.7071 7.29289C14.3166 6.90237 13.6834 6.90237 13.2929 7.29289L9.29289 11.2929C9.10536 11.4804 9 11.7348 9 12Z">
+                                            </path>
+                                        </svg> </a>
+                                </div>
+                                <ul class="text-sm subMenu hidden ">
+                                    <li class=" border-gray-100 dark:border-gray-700 border-b">
+                                        <a href="journalvoucher.html"
+                                            class="flex justify-between hover:text-indigo-500 font-medium text-gray-700 dark:text-gray-400">
+                                            Customer Ledger
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="ml-1 w-6 h-6 bi bi-plus dark:text-gray-400"
+                                                    viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                </svg></span></a>
+                                    </li>
+                                    <li class=" border-gray-100 dark:border-gray-700 border-b">
+                                        <a href="journalvoucher.html"
+                                            class="dark:text-gray-400 flex hover:text-indigo-500 justify-between font-medium text-gray-700">
+                                            Vendor Ledger
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="ml-1 w-6 h-6 bi bi-plus" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                </svg></span></a>
+                                    </li>
+                                    <li class=" ">
+                                        <a href="journalvoucher.html"
+                                            class="flex justify-between hover:text-indigo-500 font-medium text-gray-700 dark:text-gray-400">
+                                            Both Party Ledger
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="ml-1 w-6 h-6 bi bi-plus" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                </svg></span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class=" border-gray-100 dark:border-gray-700 border-b">
+                                <div class="flex justify-between hasSub hasSubMenu3 items-center  hover:text-indigo-600">
+                                    <button class="hover:text-indigo-500 font-semibold text-gray-700 py-2 dark:text-gray-300">
+                                        Tax Reports
+                                    </button>
+                                    <a href="#" class="inline-block ml-auto dark:text-gray-400">
+                                        <svg data-baseweb="icon" viewBox="0 0 24 24"
+                                            class="ml-1 w-6 h-6 fill-current chevron">
+                                            <title>Chevron Down</title>
+                                            <path transform="rotate(270, 12, 12)" fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M9 12C9 12.2652 9.10536 12.5196 9.29289 12.7071L13.2929 16.7071C13.6834 17.0976 14.3166 17.0976 14.7071 16.7071C15.0976 16.3166 15.0976 15.6834 14.7071 15.2929L11.4142 12L14.7071 8.70711C15.0976 8.31658 15.0976 7.68342 14.7071 7.29289C14.3166 6.90237 13.6834 6.90237 13.2929 7.29289L9.29289 11.2929C9.10536 11.4804 9 11.7348 9 12Z">
+                                            </path>
+                                        </svg> </a>
+                                </div>
+                                <ul class="subMenu hidden text-sm ">
+                                    <li class=" border-gray-100 dark:border-gray-700 border-b">
+                                        <a href="#"
+                                            class="dark:text-gray-400 flex hover:text-indigo-500 justify-between font-medium text-gray-700">
+                                            Monthly VAT Report
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="ml-1 w-6 h-6 bi bi-plus" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                </svg></span></a>
+                                    </li>
+                                    <li class="border-gray-100 dark:border-gray-700 border-b">
+                                        <a href="#"
+                                            class="flex dark:text-gray-400 hover:text-indigo-500 justify-between font-medium text-gray-700">
+                                            VAT Maskewari
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="ml-1 w-6 h-6 bi bi-plus" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                </svg></span></a>
+                                    </li>
+                                    <li class="border-gray-100 dark:border-gray-700 border-b">
+                                        <a href="#"
+                                            class="flex justify-between hover:text-indigo-500 dark:text-gray-400 font-medium text-gray-700">
+                                            Sales VAT Register
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="ml-1 w-6 h-6 bi bi-plus" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                </svg></span></a>
+                                    </li>
+                                    <li class="border-gray-100 dark:border-gray-700 border-b">
+                                        <a href="#"
+                                            class="flex justify-between hover:text-indigo-500 dark:text-gray-400 font-medium text-gray-700">
+                                            Sales VAT Register
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="ml-1 w-6 h-6 bi bi-plus" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                </svg></span></a>
+                                    </li>
+                                    <li class="border-gray-100 dark:border-gray-700 border-b">
+                                        <a href="#"
+                                            class="flex justify-between hover:text-indigo-500 dark:text-gray-400 font-medium text-gray-700">
+                                            Sales Confirmation
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="ml-1 w-6 h-6 bi bi-plus" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                </svg></span></a>
+                                    </li>
+                                    <li class="border-gray-100 dark:border-gray-700 border-b">
+                                        <a href="#"
+                                            class="flex justify-between hover:text-indigo-500 dark:text-gray-400 font-medium text-gray-700">
+                                            Anex 13
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="ml-1 w-6 h-6 bi bi-plus" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                </svg></span></a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#"
+                                            class="flex justify-between hover:text-indigo-500 dark:text-gray-400 font-medium text-gray-700">
+                                            More than one lakh
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="ml-1 w-6 h-6 bi bi-plus" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                </svg></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="">
+                                <div class="flex justify-between hasSub hasSubMenu4 items-center  hover:text-indigo-600">
+                                    <button class="hover:text-indigo-500 py-2 font-semibold text-gray-700 dark:text-gray-300">
+                                        System Reports
+                                    </button>
+                                    <a href="#" class="inline-block ml-auto dark:text-gray-400">
+                                        <svg data-baseweb="icon" viewBox="0 0 24 24"
+                                            class="ml-1 w-6 h-6 fill-current chevron">
+                                            <title>Chevron Down</title>
+                                            <path transform="rotate(270, 12, 12)" fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M9 12C9 12.2652 9.10536 12.5196 9.29289 12.7071L13.2929 16.7071C13.6834 17.0976 14.3166 17.0976 14.7071 16.7071C15.0976 16.3166 15.0976 15.6834 14.7071 15.2929L11.4142 12L14.7071 8.70711C15.0976 8.31658 15.0976 7.68342 14.7071 7.29289C14.3166 6.90237 13.6834 6.90237 13.2929 7.29289L9.29289 11.2929C9.10536 11.4804 9 11.7348 9 12Z">
+                                            </path>
+                                        </svg> </a>
+                                </div>
+                                <ul class="subMenu hidden text-sm">
+                                    <li class="">
+                                        <a href="#"
+                                            class="dark:text-gray-400 hover:text-indigo-500 flex justify-between font-medium text-gray-700">
+                                            Activity Log
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="ml-1 w-6 h-6 bi bi-plus" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                </svg></span></a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#"
+                                            class="dark:text-gray-400 hover:text-indigo-500 flex justify-between font-medium text-gray-700">
+                                            Sales Cancellation Log
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="ml-1 w-6 h-6 bi bi-plus" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                </svg></span></a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#"
+                                            class="dark:text-gray-400 hover:text-indigo-500 flex justify-between font-medium text-gray-700">
+                                            Sales Materialized View
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="ml-1 w-6 h-6 bi bi-plus" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                </svg>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                
+                  
+                        
+                       
+                     
+
+            </div>
+            
+        </nav>
+        
+    </header>
+
+
+
+    <!-- <header class="lg:hidden flex justify-between items-center px-4 py-2.5 nav-header">
+       logo
+        <nav class="side-navbar">
+            <span class="sideopen-menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="16">
+                    <g fill="#252a32" fill-rule="evenodd">
+                        <path d="M0 0h24v2H0zM0 7h24v2H0zM0 14h24v2H0z" />
+                    </g>
+                </svg>
+            </span>
+
+            <div class="menu-wrapper">
+                <ul class="menu ">
+                    <li class="menu-block">
+                        <span class="sideclose-menu">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+                                <path fill="#252a32"
+                                      fill-rule="evenodd"
+                                      d="M17.778.808l1.414 1.414L11.414 10l7.778 7.778-1.414 1.414L10 11.414l-7.778 7.778-1.414-1.414L8.586 10 .808 2.222 2.222.808 10 8.586 17.778.808z" />
+                            </svg>
+                        </span>
+                    </li>
+                    <li class="relative text-gray-700 border-b  dark:text-gray-300 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 border-inherit">
+                        <a href="index.html" class="block  dark:text-gray-400 font-medium py-2 flex items-center ">
+                            <img class="mx-2 w-8 h-8 object-cover" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAACXBIWXMAAAsTAAALEwEAmpwYAAADm0lEQVR4nO3WX0xTVxwH8OqiiXEPS3zwwZe97GlPZi97mslmLeltp8MVk8XFP9P4Z5Mlm3ExcakxspbeW1lFAwqoSCSKgDNgHdkYAdPbnmspFEqxFHuR+QeGTTv6ByjlfpdzrUSqhjAFq/Yk37S5Pe3vc8/53ZMqFG/LYI7yq9ZzwnUNJzSrDPb3FZkydHrPUnWh/RBjckQPNwxOHm4YTDImElez5NBHp5xLXilOabB9omGJuKPCG7noHoO1X5JT0z2O3ZW9EQ1L7q4z2pULDvu0wL5Sw5G6DcecsRNtQRlV65lA/oU+ObU9E/K14raH2HBMiGk5cpl+Z95hupqadxjW8R3DksjB+oHxq74krH4JhqYHyC1ywtx0B9zvd+T39Br9jM45WC8m1KwjpmZJvl6PxfOCyzHYVms50r251D1a5YrJK1TpjGDL6S7sOeuBLRCFGJbkkIE48qu8+LrUjTPCqDy3uiOOrWVdEY1Z8OUYHR+/NNiaopb3GJaUMqwQL2x6IF3rl3CldxIHLgeQ+6sTlfwQAilYeuraR7DR4sT31X2o8yZkqKVlRNJyQpxhSc1nv5AVL4RTG/k8hnWE9l3wjdWnChTfCCLvuAs/1/nhGUo8E/Zkev5JwNAo4ktLO8x/DuPRDSaw/9LtcQ1HwjlGfosCWDQn2NpC+wefmwV+04mO6PQWdcax62wPtp/uwl++0VlhYlpa+yPYWdGNbyo8eNwi55wRfFXijmrNN10qI/lwVpjOzC9Tm0iBxkSiBdZ7yWv+KTT4ktBfHZS3s7ztPm6HpuaME1MJhCRU2obwRdFN/FQbwG+3JuUHiWseTmo5ElObHCVr9C3vPhOnNPBaxkSGd57xxuk5Ru/w5I0gNhW78GP1LXTcG//fMDEt7vsTcovojrfD0vpw+pj6tspHezOYY+B1M3Aajvyx0dIePcWH5cmXusaw93wvNpd04npP6KXBxLTQ36Y1aC1ak9amBmqhpmmgymhHY98UGvxTONJ4V96Ck81/wx9MzhtOTIXWoLVoTVqbGqiFmmYAyxz/Iq/YhX3nvXAMxOYdJqZFGBzDD9W9yLU4UWoLPQ1kWDJCXxcaJqblScs0cJ3RblKyncszBahkO5dT01NPcqYAFc8bWWA4u4LSjF5RzSEL3oN0rjX1F3+2ZIFidgWlbA8i+5C8dcfM1jIPtpV7Mhe4rdyD7ZkMtGb6FluzwHB2BfFm9qAqA6J4ncZ/D+G9oGjzB2wAAAAASUVORK5CYII=">Dashboard
+                        </a>
+                    </li>
+                    <li class="menu-item has-collapsible border-b  pb-2 hover:bg-gray-100  dark:border-gray-700 border-inherit">
+                        <a href="#" class=" block  flex items-center py-2 ">
+                            <img class="mx-2 w-8 h-8 object-cover" src="data:image/png;base64,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">
+                            <span class="link_name dark:text-gray-400 font-medium"> Inventory</span>
+                        </a>
+                        <ul class="menu-child mt-2 divide-y divide-gray-300 dark:divide-gray-600 divide-dashed">
+                            <li class="menu-child-item  ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Purchase entry</a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Purchase Challan List</a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Purchase List </a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Debit Note </a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Debit Note List</a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Sales Entry</a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Sales List</a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Credit Note </a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Credit Note List</a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Manufacturing Invoice </a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Manufacturing List</a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Stock In </a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Stock In List</a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Stock Out </a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Stock Out List</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="menu-item has-collapsible border-b  pb-2 hover:bg-gray-100  dark:border-gray-700 border-inherit">
+                        <a href="#" class=" block  flex items-center py-2 ">
+                            <img class="mx-2 w-8 h-8 object-cover" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADT0lEQVR4nO1bz0sUURwf6WAzIfgHWKfCc0qdEoQOJoEzHroI9Q9UaJLORIQVZiR4FT2kizdF2UOSWMlKQSqSBykknYHdUZZ2zd0dPSjk4xtv3bHdaWbd3XHdmdnvFz4w8N77vu/n877vx8y+ZRg0NDS0ItidCTh3dSh+s344/qh+OPHMDHVDWgetQ+syXrOGkUTTg6nwl57p0G7v+xCYgZbdnwp/pnUZr1mnX52zIm5Ep39rjvGa9WQZeSOeT4f2GCfbef7pRU6QJllB2uUECcxQ3dYPNR1TcOnxuyRyJa9Db0d9VLe9Me2D4igG0V/V0lWbHiPXKt7mBHHrvza8tMkJ3c22yLO8tGMVkI6Gvk/wxC/nTdwI6uNG78esfaWEiNHYjgVIErWqL6oFC8AJ0iR10vpyFDajcSCEmOL17FaSwGbsANTYQd7E09tRX1b9qNEY8C9G9NGdSIszq2AFC8Cm0l6N7FgGRaETUQsUwNguW1+hXzupLBC1ogvApRxkC4hi4EPQdvrrGJgNntifkVjJBZhf2TgVESj5+ZV19wmgaRqsra3B6uqqLVAf1Fe+ApxUv+gCkDMGCiBkZoDV+4YOz2dAvWME2I/An2gADiOzGZAHmQwYyw+35+FwP+J+AfbUGQh+ewvy0nAmDAIYy2mbXXXG/QIEzcjnIIAugusFkM3IU4xd/kd+7IplPe8KsJQbUACCGQA4BQiuAYCLIMFdAHAbJHgOADwIEbedBJd9BZ8CN5Z97j8J/vz+tSARKPn1HwvuF0Ar8Ntgrt8CHS8AOSOgAAJmAOAUEDy8BmipxdRqcSz5FJBl2favQEYoinLsP30noc+OE0BRlPIWgJT7FCB4DiB4ECLlPAVk3AUU3AVIOU8BgosgwV2AlPMUkB22CyQWfYHEog8sEPD8u0B8YbTRSgBaduoCEIdNgSxZUPjou2kXsMoCW6Offlk6FN4uOWkdwXD06LI0LyUYg7GCFNDFoc+MXeME0U+dNbf3O0IESv7Ww379uvy4Md4LvNioC0CfbQtQ1dJVS/+cUNnUARXX7wJT11ZSVFy7B5VN7cDy4m+2tbvGLGaWF/tYQXrFnOpfZnhpgt7PP+lWdrGRjIGXxq3Io6GhoTF52F971OZVC3nfjQAAAABJRU5ErkJggg==">
+
+                            <span class="link_name dark:text-gray-400 font-medium"> Voucher</span>
+                        </a>
+                        <ul class="menu-child mt-2 divide-y divide-gray-300 dark:divide-gray-600 divide-dashed">
+                            <li class="menu-child-item  ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Journal Voucher</a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Sales Entry</a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Stock In </a></li>
+                            <li class="menu-child-item ml-6 py-2"><a href="#" class="hover:text-indigo-600 text-gray-600">Stock Out </a></li>
+                        </ul>
+                    </li>
+
+
+                   <div class="item">
+         <a class="sub-btn"><i class="fas fa-table"></i>Reports<i class="fas fa-angle-right dropdown"></i></a>
+         <div class="sub-menu" style="display: none;">
+           <a href="#" class="sub-item">
+
+            </a><div class="item"><a href="#" class="sub-item">
+              </a><a class="sub-btn"><i class="fas fa-table"></i>Account Reports<i class="fas fa-angle-right dropdown"></i></a>
+              <div class="sub-menu" style="display: none;">
+                <a href="#" class="sub-item">reports</a>
+                <a href="#" class="sub-item">subreport</a>
+                <a href="#" class="sub-item">journal</a>
+              </div>
+            </div>
+           
+           <a href="#" class="sub-item">
+
+            </a><div class="item"><a href="#" class="sub-item">
+              </a><a class="sub-btn"><i class="fas fa-table"></i>Tax Reports<i class="fas fa-angle-right dropdown"></i></a>
+              <div class="sub-menu" style="display: none;">
+                <a href="#" class="sub-item">reports</a>
+                <a href="#" class="sub-item">subreport</a>
+                <a href="#" class="sub-item">journal</a>
+              </div>
+            </div>
+           
+          
+         </div>
+       </div>
+            </div>
+        </nav>
+        
+    </header> -->
+
+
+      
+<script>
+const openMenu = document.querySelector(".sideopen-menu");
+const closeMenu = document.querySelector(".sideclose-menu");
+const menuWrapper = document.querySelector(".menu-wrapper");
+const hasCollapsible = document.querySelectorAll(".has-collapsible");
+
+// Sidenav Toggle
+openMenu.addEventListener("click", function () {
+    menuWrapper.classList.add("offcanvas");
+});
+
+closeMenu.addEventListener("click", function () {
+    menuWrapper.classList.remove("offcanvas");
+});
+
+// Collapsible Menu
+hasCollapsible.forEach(function (collapsible) {
+    collapsible.addEventListener("click", function () {
+        collapsible.classList.toggle("active");
+
+        // Close Other Collapsible
+        hasCollapsible.forEach(function (otherCollapsible) {
+            if (otherCollapsible !== collapsible) {
+                otherCollapsible.classList.remove("active");
+            }
+        });
+    });
+});
+
+
+
+$(document).ready(function(){
+    //jquery for toggle sub menus
+    $('.sub-btn').click(function(){
+      $(this).next('.sub-menu').slideToggle();
+      $(this).find('.dropdown').toggleClass('rotate');
+    });
+
+    //jquery for expand and collapse the sidebar
+    $('.menu-btn').click(function(){
+      $('.side-bar').addClass('active');
+      $('.menu-btn').css("visibility", "hidden");
+    });
+
+    $('.close-btn').click(function(){
+      $('.side-bar').removeClass('active');
+      $('.menu-btn').css("visibility", "visible");
+    });
+  });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+    </body>
+    </html>

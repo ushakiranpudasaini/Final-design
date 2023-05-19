@@ -1,0 +1,180 @@
+<div class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id">
+    <div class="relative w-auto my-6 mx-auto max-w-3xl">
+        <!--content-->
+        <div class="border-0 rounded-md overflow-y-scroll h-[80vh] relative flex flex-col w-full bg-white outline-none focus:outline-none">
+            <!--header-->
+            <div class="flex items-start justify-between p-3 border-b border-solid border-slate-200 rounded-t">
+                <h3 class="text-xl font-semibold">
+                    Purchase Entry
+                </h3>
+                <button class="p-1 ml-auto bg-transparent border-0 text-black  float-right text-3xl leading-none font-semibold outline-none focus:outline-none" onclick="toggleModal('modal-id')">
+                    <span class="bg-transparent text-gray-900  h-6 w-6 text-2xl block outline-none focus:outline-none">
+                        ×
+                    </span>
+                </button>
+            </div>
+            <!--body-->
+            <div class="relative p-4 flex-auto">
+                <div class="entry-transaction form-purchase" data-container="purchase-entry" style="padding:0 10px;">
+                    <div style="border-bottom:1px solid #dedede; margin-bottom:10px;">
+                        <div class="form-group header-control d-block">
+                            <label>Purchase Account<span req>*</span> <span class="new-gl append-new" title="Add new">+ New</span></label>
+                            <div id="PurchaseAccountId" class="control" />
+                        </div>
+                        <div class="form-group header-control">
+                            <label>Purchase No</label>
+                            <div id="DocumentNumber" class="control" />
+                        </div>
+                        <div class="form-group header-control">
+                            <label>Challan No</label>
+                            <div id="PurchaseChallanId" class="control" />
+                        </div>
+                        <div class="form-group header-control">
+                            <label>Entry Date<span req>*</span></label>
+                            <div id="EntryDate" class="control" />
+                        </div>
+                        <div class="form-group header-control">
+                            <label>Date BS(yyyy-mm-dd)<span req>*</span></label>
+                            <div id="InvoiceDate" class="control" />
+                        </div>
+                        <div class="form-group header-control">
+                            <label>Date AD (yyyy-mm-dd)<span req>*</span></label>
+                            <div id="InvoiceDateAD" class="control" />
+                        </div>
+                        <div class="form-group header-control">
+                            <label>Invoice Type<span req>*</span></label>
+                            <div id="InvoiceType" class="control" />
+                        </div>
+                        <div class="form-group header-control">
+                            <label>Vendor <span class="new-vendor append-new" title="Add new">+ New</span> <span id="VendorBalance" class="VendorBalance badge-primary badge" /></label>
+                            <div id="VendorId" class="VendorId control" />
+                        </div>
+                        <div class="form-group header-control">
+                            <label>Party Bill Number</label>
+                            <div id="RefDocumentNo" />
+                        </div>
+                        <div class="form-group header-control">
+                            <label for="DueDate">Due Date</label>
+                            <div id="DueDate" class="pl-1 p-r1" />
+                        </div>
+                    </div>
+                    <div class="entry-panel" style="border-bottom:2px solid #dedede;">
+                        <div class="form-group header-control">
+                            <label>Name of Item <span class="new-item append-new" title="Add new">+ New</span></label>
+                            <div id="ItemId" class="control ItemId" />
+                        </div>
+                        <div class="form-group header-control">
+                            <label>Quantity</label>
+                            <div id="Quantity" />
+                        </div>
+                        <div class="form-group header-control">
+                            <label>Rate</label>
+                            <div id="Rate" />
+                        </div>
+                        <div class="form-group header-control">
+                            <label>Basic Amount</label>
+                            <div id="BasicAmount" />
+                        </div>
+                        <div class="form-group header-control">
+                            <label>Discount %</label>
+                            <div id="DiscountPercent" />
+                        </div>
+                        <div class="form-group header-control">
+                            <label>Discount</label>
+                            <div id="DiscountAmount" />
+                        </div>
+                        <div class="form-group header-control">
+                            <label>Amount</label>
+                            <div id="Amount" />
+                        </div>
+                        <div class="form-group header-control">
+                            <div id="btn-add" />
+                        </div>
+                    </div>
+                    <div data-grid="purchase-entry" class="entry-grid" />
+                    <div class="pb-2 row">
+                        <div class="col-md-4">
+                            <label class="font-bold">Remarks</label>
+                            <div id="Remarks" />
+                            <div class="errorlist mt-2"></div>
+                        </div>
+                        <div class="col-md-6 invoice-summary-panel">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Sub Total</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div id="SubTotal" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Less Discount</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div id="DiscountRate" />
+                                    <div id="Discount" />
+                                </div>
+                            </div>
+                            <div class="row excise-duty d-none">
+                                <div class="col-md-4">
+                                    <label>Excisable Amount</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div id="ExcisableAmount" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Excise Duties</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div id="ExciseDuty" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Taxable Amount</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div id="TaxableAmount" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>VAT</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div id="Vat" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Net Amount</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div id="NetAmount" />
+                                </div>
+                            </div>
+                            <div class="row mt-1">
+                                <div class="offset-4 col-md-8">
+                                    <div id="btn-submit" class="mt-1" />
+                                    <div id="btn-cancel" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+            <!--footer-->
+            <div class="flex items-center justify-end p-2.5 border-t border-solid border-slate-200 rounded-b">
+                <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id')">
+                    Close
+                </button>
+                <button class="bg-indigo-500 text-white active:bg-indigo-600 font-semibold  text-sm px-4 py-3 rounded-md hover:bg-indigo-500 outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id')">
+                    Save Changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hidden  fixed inset-0 overflow-y-auto z-40 bg-gray-100" id="modal-id-backdrop"></div>

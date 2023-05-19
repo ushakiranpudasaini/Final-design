@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html class="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                },
+                fontFamily: {
+                    poppins: ['Poppins', 'sans-serif'],
+                    Montserrat: ['Montserrat', 'sans-serif']
+                },
+            }
+        }
+    </script>
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins&display=swap" rel="stylesheet">
+    <title>Document</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+/* Sets the background color of the body to blue. Sets font to Rubik */
+
+
+
+/* Sets the width for the accordion. Sets the margin to 90px on the top and bottom and auto to the left and right */
+
+
+.sidenav-accordion .side-subMenu {
+  position: relative;
+  margin: 10px 10px;
+}
+
+
+
+.sidenav-accordion .label {
+  position: relative;
+  padding: 10px 0;
+  font-size: 30px;
+  color: black;
+  cursor: pointer;
+}
+.sidenav-accordion .label::before {
+  content: '+';
+  color: black;
+  position: absolute;
+  top: 50%;
+  right: -5px;
+  font-size: 30px;
+  transform: translateY(-50%);
+}
+
+
+
+.sidenav-accordion .content {
+  position: relative;
+  background: white;
+  height: 0;
+  font-size: 20px;
+  text-align: justify;
+  /* width: 780px; */
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+
+
+.sidenav-accordion hr {
+  width: 100;
+  margin-left: 0;
+  border: 1px solid grey;
+}
+.sidenav-accordion .side-subMenu.active .content {
+  height: 100px;
+}
+
+
+
+.sidenav-accordion .side-subMenu.active .label::before {
+  content: '-';
+  font-size: 30px;
+}
+</style>
+</head>
+
+<body class="font-poppins bg-[#EEF2F7]">
+   <ul>
+    <li class="sidenav-accordion-body">
+        <div class="sidenav-accordion">    
+          <div class="side-subMenu">
+            <div class="label"> Account Reports</div>
+            <div class="content">Day Book</div>
+          </div>  
+        </div>
+        </li></ul>
+    
+
+<script>
+const accordion = document.getElementsByClassName('side-subMenu');
+
+for (i=0; i<accordion.length; i++) {
+  accordion[i].addEventListener('click', function () {
+    this.classList.toggle('active')
+  })
+}
+</script>
+    </body>
+    </html>

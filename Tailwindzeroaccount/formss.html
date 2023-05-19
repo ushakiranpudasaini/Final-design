@@ -1,0 +1,165 @@
+<div class="entry-transaction form-purchase" data-container="purchase-entry" style="padding:0 10px;">
+    <div class="flex flex-wrap " >
+        <div class=" w-full px-2 mb-6">
+          <label class="text-sm text-gray-700 dark:text-gray-400 ">Purchase Account <span req>*</span> <span class="new-gl append-new" title="Add new">+ New</span></label>
+<div id="PurchaseAccountId" class="control " />
+          
+        </div>
+        <div class="lg:w-1/3 w-full px-2 mb-6">                       
+            <label class="text-xs font-medium text-gray-700 dark:text-gray-400 ">Purchase No</label>
+            <div id="DocumentNumber" class="control h-10 border mt-1 text-sm rounded px-4 w-full bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-gray-400"/>
+       </div>
+       <div class="lg:w-1/3 w-full px-2 mb-6">
+       
+        <label class="text-xs font-medium text-gray-700 dark:text-gray-400 ">Date BS(yyyy-mm-dd)<span req>*</span></label>
+      <div id="InvoiceDate" class=" h-10 border mt-1 text-sm rounded px-4 w-full bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-gray-400" />
+ </div>
+  <div class="lg:w-1/3 w-full px-2 mb-6">
+
+        <label class="text-xs font-medium text-gray-700 dark:text-gray-400 ">Date AD (yyyy-mm-dd)<span req>*</span></label>
+      <div id="InvoiceDateAD" class=" h-10 border mt-1 text-sm rounded px-4 w-full bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-gray-400" />
+  </div>
+        <div class="lg:w-1/3 w-full px-2 mb-6">
+      
+              <label class="text-xs font-medium text-gray-700 dark:text-gray-400 ">Challan No</label>
+            <div id="PurchaseChallanId" class=" control h-10 border mt-1 text-sm rounded px-4 w-full bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-gray-400" style="width:100%;" />
+        </div>
+        <div class="lg:w-1/3 w-full px-2 mb-6">
+       
+            <label class="text-xs font-medium text-gray-700 dark:text-gray-400 ">Entry Date<span req>*</span></label>
+          <div id="EntryDate" class=" h-10 border mt-1 text-sm rounded px-4 w-full bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-gray-400" />
+      </div>
+     
+    
+
+       
+        <div class="lg:w-1/3 w-full px-2 mb-6">
+       
+              <label class="text-xs font-medium text-gray-700 dark:text-gray-400 ">Invoice Type<span req>*</span></label>
+            <div id="InvoiceType" class=" h-10 border mt-1 text-sm rounded px-4 w-full bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-gray-400" />
+       </div>
+        <div class="lg:w-1/3 w-full px-2 mb-6">
+       
+              <label class="text-xs font-medium text-gray-700 dark:text-gray-400 ">Vendor <span class="new-vendor append-new" title="Add new">+ New</span> <span id="VendorBalance" class="VendorBalance badge-primary badge" /></label>
+            <div id="VendorId" class="VendorId  h-10 border mt-1 text-sm rounded pl-4 w-full bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-gray-400" />
+       </div>
+        <div class="lg:w-1/3 w-full px-2 mb-6">
+       
+              <label class="text-xs font-medium text-gray-700 dark:text-gray-400 ">Party Bill Number</label>
+            <div id="RefDocumentNo" class="h-10 border mt-1 text-sm rounded px-4 w-full bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-gray-400"/>
+       </div>
+        <div class="lg:w-1/3 w-full px-2 mb-6">
+        
+            <label class="text-xs font-medium text-gray-700 dark:text-gray-400 " for="DueDate">Due Date</label>
+            <div id="DueDate" class="pl-1 p-r1 h-10 border mt-1 text-sm rounded pl-4 w-full bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-gray-400" />
+       </div></div>
+    
+    <div class="entry-panel" style="border-bottom:2px solid #dedede;">
+        <div class="flex flex-wrap items-center" >
+            <div class="lg:w-1/3 w-full px-2 mb-6">               
+              <label class="text-xs font-medium text-gray-700 dark:text-gray-400 ">Name of Item <span class="new-item append-new" title="Add new">+ New</span></label>
+            <div id="ItemId" class="control  ItemId h-10 border mt-1 text-sm rounded pl-4 w-full bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-gray-400" />
+        </div>
+   
+        <div class="lg:w-1/3 w-full px-2 mb-6">
+              <label class="text-xs font-medium text-gray-700 dark:text-gray-400 ">Quantity</label>
+            <div id="Quantity" class="h-10 border mt-1 text-sm rounded px-4 w-full bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-gray-400" />
+        </div>
+        
+        <div class="lg:w-1/3 w-full px-2 mb-6">
+              <label class="text-xs font-medium text-gray-700 dark:text-gray-400 ">Rate</label>
+            <div id="Rate" class="h-10 border mt-1 text-sm rounded px-4 w-full bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-gray-400"/>
+        </div>
+        <div class="lg:w-1/3 w-full px-2 mb-6">
+              <label class="text-xs font-medium text-gray-700 dark:text-gray-400 ">Basic Amount</label>
+            <div id="BasicAmount" class="h-10 border mt-1 text-sm rounded px-4 w-full bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-gray-400"/>
+        </div>
+        <div class="lg:w-1/3 w-full px-2 mb-6">
+              <label class="text-xs font-medium text-gray-700 dark:text-gray-400 ">Discount %</label>
+            <div id="DiscountPercent" class="h-10 border mt-1 text-sm rounded px-4 w-full bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-gray-400"/>
+        </div>
+        <div class="lg:w-1/3 w-full px-2 mb-6">
+              <label class="text-xs font-medium text-gray-700 dark:text-gray-400 ">Discount</label>
+            <div id="DiscountAmount" class="h-10 border mt-1 text-sm rounded px-4 w-full bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-gray-400"/>
+        </div>
+        <div class="lg:w-1/3 w-full px-2 mb-6">
+              <label class="text-xs font-medium text-gray-700 dark:text-gray-400 ">Amount</label>
+            <div id="Amount" class="h-10 border mt-1 text-sm rounded px-4 w-full bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-gray-400"/>
+        </div>
+        <div class="lg:w-1/3 w-full px-2 ">
+            <div id="btn-add" class="border-[#337ab7] text-[#337ab7] hover:bg-[#337ab7] hover:text-gray-50"/>
+        </div>
+    </div>
+    </div>
+    <div data-grid="purchase-entry" class="entry-grid" />
+    <div class="pb-2 flex flex-wrap ">
+        <div class="lg:w-1/3 w-full px-2 ">
+            <label class="text-xs font-medium text-gray-700 dark:text-gray-400 ">Remarks</label>
+            <div id="Remarks" />
+            <div class="errorlist mt-2"></div>
+        </div>
+        <div class="lg:flex-1 w-full px-2  invoice-summary-panel">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Sub Total</label>
+                </div>
+                <div class="col-md-8">
+                    <div id="SubTotal" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Less Discount</label>
+                </div>
+                <div class="col-md-8">
+                    <div id="DiscountRate" />
+                    <div id="Discount" />
+                </div>
+            </div>
+            <div class="row excise-duty d-none">
+                <div class="col-md-4">
+                    <label>Excisable Amount</label>
+                </div>
+                <div class="col-md-8">
+                    <div id="ExcisableAmount" />
+                </div>
+                <div class="col-md-4">
+                    <label>Excise Duties</label>
+                </div>
+                <div class="col-md-8">
+                    <div id="ExciseDuty" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Taxable Amount</label>
+                </div>
+                <div class="col-md-8">
+                    <div id="TaxableAmount" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label>VAT</label>
+                </div>
+                <div class="col-md-8">
+                    <div id="Vat" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Net Amount</label>
+                </div>
+                <div class="col-md-8">
+                    <div id="NetAmount" />
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="offset-4 col-md-8">
+                    <div id="btn-submit" class="mt-3" />
+                    <div id="btn-cancel" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
